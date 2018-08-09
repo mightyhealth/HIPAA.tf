@@ -24,3 +24,7 @@ variable "global_secondary_index" {
   type    = "list"
   default = []
 }
+
+variable "point_in_time_recovery" {
+  default = true
+}
