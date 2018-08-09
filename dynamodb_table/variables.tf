@@ -28,3 +28,7 @@ variable "global_secondary_index" {
 variable "point_in_time_recovery" {
   default = true
 }
+
+variable "prevent_destroy" {
+  default = true
+}

@@ -5,6 +5,9 @@ module "dynamodb_table_test" {
   write_capacity = 1
   hash_key       = "id"
 
+  # prevent_destroy should be removed or changed to true on production
+  prevent_destroy = false
+
   attributes = [
     {
       name = "id"
