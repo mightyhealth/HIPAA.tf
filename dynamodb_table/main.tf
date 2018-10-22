@@ -15,6 +15,10 @@ resource "aws_dynamodb_table" "table_no_destroy" {
 
   global_secondary_index = ["${var.global_secondary_index}"]
 
+  stream_view_type = "${var.stream_view_type}"
+
+  stream_enabled = "${var.stream_enabled}"
+
   point_in_time_recovery {
     enabled = "${var.point_in_time_recovery}"
   }
@@ -39,6 +43,10 @@ resource "aws_dynamodb_table" "table" {
   }
 
   global_secondary_index = ["${var.global_secondary_index}"]
+
+  stream_view_type = "${var.stream_view_type}"
+
+  stream_enabled = "${var.stream_enabled}"
 
   point_in_time_recovery {
     enabled = "${var.point_in_time_recovery}"
