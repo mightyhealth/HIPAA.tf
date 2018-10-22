@@ -32,3 +32,11 @@ variable "point_in_time_recovery" {
 variable "prevent_destroy" {
   default = true
 }
+
+variable "stream_view_type" {
+  default = "NEW_AND_OLD_IMAGES"
+}
+
+variable "stream_enabled" {
+  default = false
+}
