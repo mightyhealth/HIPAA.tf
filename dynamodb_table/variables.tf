@@ -34,7 +34,7 @@ variable "prevent_destroy" {
 }
 
 variable "stream_view_type" {
-  default = "NEW_AND_OLD_IMAGES"
+  default = ""
 }
 
 variable "stream_enabled" {
