@@ -7,11 +7,11 @@ variable "billing_mode" {
 }
 
 variable "read_capacity" {
-  default = ""
+  default = 0
 }
 
 variable "write_capacity" {
-    default = ""
+    default = 0
 }
 
 variable "hash_key" {
