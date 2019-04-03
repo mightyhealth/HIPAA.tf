@@ -6,6 +6,7 @@ resource "aws_dynamodb_table" "table_no_destroy" {
   write_capacity = "${var.write_capacity}"
   hash_key       = "${var.hash_key}"
   range_key      = "${var.range_key}"
+  billing_mode   = "${var.billing_mode}"
 
   attribute = ["${var.attributes}"]
 
@@ -35,6 +36,7 @@ resource "aws_dynamodb_table" "table" {
   write_capacity = "${var.write_capacity}"
   hash_key       = "${var.hash_key}"
   range_key      = "${var.range_key}"
+  billing_mode   = "${var.billing_mode}"
 
   attribute = ["${var.attributes}"]
 

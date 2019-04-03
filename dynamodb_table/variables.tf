@@ -2,9 +2,17 @@ variable "name" {
   type = "string"
 }
 
-variable "read_capacity" {}
+variable "billing_mode" {
+  default = "PROVISIONED"
+}
 
-variable "write_capacity" {}
+variable "read_capacity" {
+  default = ""
+}
+
+variable "write_capacity" {
+    default = ""
+}
 
 variable "hash_key" {
   type = "string"
