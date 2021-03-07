@@ -8,7 +8,13 @@ resource "aws_dynamodb_table" "table_no_destroy" {
   range_key      = "${var.range_key}"
   billing_mode   = "${var.billing_mode}"
 
-  attribute = ["${var.attributes}"]
+  dynamic "attribute" {
+    for_each = var.attributes
+    content {
+      name = attribute.value.name
+      type = attribute.value.type
+    }
+  }
 
   server_side_encryption = {
     enabled = true
@@ -38,7 +44,13 @@ resource "aws_dynamodb_table" "table" {
   range_key      = "${var.range_key}"
   billing_mode   = "${var.billing_mode}"
 
-  attribute = ["${var.attributes}"]
+  dynamic "attribute" {
+    for_each = var.attributes
+    content {
+      name = attribute.value.name
+      type = attribute.value.type
+    }
+  }
 
   server_side_encryption = {
     enabled = true
