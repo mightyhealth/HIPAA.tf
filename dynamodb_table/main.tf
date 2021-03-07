@@ -16,11 +16,23 @@ resource "aws_dynamodb_table" "table_no_destroy" {
     }
   }
 
-  server_side_encryption = {
+  server_side_encryption {
     enabled = true
   }
 
-  global_secondary_index = ["${var.global_secondary_index}"]
+
+  dynamic "global_secondary_index" {
+    for_each = var.global_secondary_index
+    content {
+      hash_key           = global_secondary_index.value.hash_key
+      name               = global_secondary_index.value.name
+      non_key_attributes = lookup(global_secondary_index.value, "non_key_attributes", null)
+      projection_type    = global_secondary_index.value.projection_type
+      range_key          = lookup(global_secondary_index.value, "range_key", null)
+      read_capacity      = lookup(global_secondary_index.value, "read_capacity", null)
+      write_capacity     = lookup(global_secondary_index.value, "write_capacity", null)
+    }
+  }
 
   stream_view_type = "${var.stream_view_type}"
 
@@ -52,12 +64,23 @@ resource "aws_dynamodb_table" "table" {
     }
   }
 
-  server_side_encryption = {
+  server_side_encryption {
     enabled = true
   }
 
-  global_secondary_index = ["${var.global_secondary_index}"]
-
+  dynamic "global_secondary_index" {
+    for_each = var.global_secondary_index
+    content {
+      hash_key           = global_secondary_index.value.hash_key
+      name               = global_secondary_index.value.name
+      non_key_attributes = lookup(global_secondary_index.value, "non_key_attributes", null)
+      projection_type    = global_secondary_index.value.projection_type
+      range_key          = lookup(global_secondary_index.value, "range_key", null)
+      read_capacity      = lookup(global_secondary_index.value, "read_capacity", null)
+      write_capacity     = lookup(global_secondary_index.value, "write_capacity", null)
+    }
+  }
+  
   stream_view_type = "${var.stream_view_type}"
 
   stream_enabled = "${var.stream_enabled}"
