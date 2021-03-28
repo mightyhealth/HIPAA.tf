@@ -1,12 +1,12 @@
 resource "aws_dynamodb_table" "table_no_destroy" {
-  count = "${var.prevent_destroy? 1 : 0}"
+  count = var.prevent_destroy? 1 : 0
 
-  name           = "${var.name}"
-  read_capacity  = "${var.read_capacity}"
-  write_capacity = "${var.write_capacity}"
-  hash_key       = "${var.hash_key}"
-  range_key      = "${var.range_key}"
-  billing_mode   = "${var.billing_mode}"
+  name           = var.name
+  read_capacity  = var.read_capacity
+  write_capacity = var.write_capacity
+  hash_key       = var.hash_key
+  range_key      = var.range_key
+  billing_mode   = var.billing_mode
 
   dynamic "attribute" {
     for_each = var.attributes
@@ -34,12 +34,12 @@ resource "aws_dynamodb_table" "table_no_destroy" {
     }
   }
 
-  stream_view_type = "${var.stream_view_type}"
+  stream_view_type = var.stream_view_type
 
-  stream_enabled = "${var.stream_enabled}"
+  stream_enabled = var.stream_enabled
 
   point_in_time_recovery {
-    enabled = "${var.point_in_time_recovery}"
+    enabled = var.point_in_time_recovery
   }
 
   lifecycle {
@@ -48,13 +48,13 @@ resource "aws_dynamodb_table" "table_no_destroy" {
 }
 
 resource "aws_dynamodb_table" "table" {
-  count          = "${var.prevent_destroy? 0 : 1}"
-  name           = "${var.name}"
-  read_capacity  = "${var.read_capacity}"
-  write_capacity = "${var.write_capacity}"
-  hash_key       = "${var.hash_key}"
-  range_key      = "${var.range_key}"
-  billing_mode   = "${var.billing_mode}"
+  count          = var.prevent_destroy? 0 : 1
+  name           = var.name
+  read_capacity  = var.read_capacity
+  write_capacity = var.write_capacity
+  hash_key       = var.hash_key
+  range_key      = var.range_key
+  billing_mode   = var.billing_mode
 
   dynamic "attribute" {
     for_each = var.attributes
@@ -81,12 +81,12 @@ resource "aws_dynamodb_table" "table" {
     }
   }
   
-  stream_view_type = "${var.stream_view_type}"
+  stream_view_type = var.stream_view_type
 
-  stream_enabled = "${var.stream_enabled}"
+  stream_enabled = var.stream_enabled
 
   point_in_time_recovery {
-    enabled = "${var.point_in_time_recovery}"
+    enabled = var.point_in_time_recovery
   }
 
   lifecycle {
