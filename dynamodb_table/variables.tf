@@ -1,5 +1,5 @@
 variable "name" {
-  type = "string"
+  type = string
 }
 
 variable "billing_mode" {
@@ -15,21 +15,21 @@ variable "write_capacity" {
 }
 
 variable "hash_key" {
-  type = "string"
+  type = string
 }
 
 variable "range_key" {
-  type    = "string"
+  type    = string
   default = ""
 }
 
 variable "attributes" {
-  type    = "list"
+  type    = list
   default = []
 }
 
 variable "global_secondary_index" {
-  type    = "list"
+  type    = list
   default = []
 }
 
