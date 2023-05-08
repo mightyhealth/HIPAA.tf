@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "table_no_destroy" {
-  count = var.prevent_destroy? 1 : 0
+  count = var.prevent_destroy ? 1 : 0
 
   name           = var.name
   read_capacity  = var.read_capacity
@@ -48,13 +48,15 @@ resource "aws_dynamodb_table" "table_no_destroy" {
 }
 
 resource "aws_dynamodb_table" "table" {
-  count          = var.prevent_destroy? 0 : 1
+  count          = var.prevent_destroy ? 0 : 1
   name           = var.name
   read_capacity  = var.read_capacity
   write_capacity = var.write_capacity
   hash_key       = var.hash_key
   range_key      = var.range_key
   billing_mode   = var.billing_mode
+  tags           = var.tags
+
 
   dynamic "attribute" {
     for_each = var.attributes
@@ -80,7 +82,7 @@ resource "aws_dynamodb_table" "table" {
       write_capacity     = lookup(global_secondary_index.value, "write_capacity", null)
     }
   }
-  
+
   stream_view_type = var.stream_view_type
 
   stream_enabled = var.stream_enabled

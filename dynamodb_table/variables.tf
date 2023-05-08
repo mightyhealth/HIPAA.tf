@@ -11,7 +11,7 @@ variable "read_capacity" {
 }
 
 variable "write_capacity" {
-    default = 0
+  default = 0
 }
 
 variable "hash_key" {
@@ -24,12 +24,12 @@ variable "range_key" {
 }
 
 variable "attributes" {
-  type    = list
+  type    = list(any)
   default = []
 }
 
 variable "global_secondary_index" {
-  type    = list
+  type    = list(any)
   default = []
 }
 
@@ -47,4 +47,9 @@ variable "stream_view_type" {
 
 variable "stream_enabled" {
   default = false
+}
+
+variable "tags" {
+  default = {}
+  type    = map(list(string))
 }
